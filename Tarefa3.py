@@ -13,12 +13,14 @@ X = np.arange(-5, 5, 0.25)
 Y = np.arange(-5, 5, 0.25)
 X, Y = np.meshgrid(X, Y)
 Z = X + Y
+R = X**2 + Y**2 - 2
 
 # Plot the surface.
-surf = ax.plot_surface(X, Y, Z, linewidth=0)
+surf = ax.plot_surface(X, Y, Z)
+surf = ax.plot_surface(X, Y, R)
 
 # Customize the z axis.
-ax.set_zlim(-5,5)
+ax.set_zlim(-10,10)
 
 
 plt.show()
