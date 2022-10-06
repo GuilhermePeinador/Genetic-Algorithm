@@ -17,7 +17,7 @@ def on_generation(ga_instance):
 ga_instance = pygad.GA(num_generations = 50,
                        num_parents_mating = 5,
                        fitness_func = fitness_func,
-                       sol_per_pop = 10,
+                       sol_per_pop = 5,
                        num_genes = 1,
                        gene_space = {"low": 0, "high": numpy.pi},
                        mutation_by_replacement = True,
