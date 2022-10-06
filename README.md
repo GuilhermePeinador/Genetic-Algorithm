@@ -1,0 +1,1 @@
+Repository dedicado ao estudo de algoritmos genéticos e suas aplicações
