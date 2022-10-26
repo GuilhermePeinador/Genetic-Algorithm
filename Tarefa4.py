@@ -10,7 +10,7 @@ def fitness_func(solution, solution_idx):
     A2 = 3*np.pi/8
 
     CL = 2*np.pi*(A0+A1/2)
-    CLref =
+    CLref = 1.4
     CM = np.pi/4 * (A2 - A1)**2
 
     fitness = - ( np.abs(CL-CLref) + np.abs(CM)**2 )
@@ -33,7 +33,7 @@ ga_instance = pygad.GA(num_generations=500,
                        fitness_func=fitness_func,
                        sol_per_pop=10,
                        num_genes=2,
-                       gene_space={"low": -5, "high": 5},
+                       gene_space={"low": 0, "high": 5},
                        mutation_by_replacement=True,
                        on_generation=on_generation)
 
