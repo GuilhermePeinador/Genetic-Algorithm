@@ -19,7 +19,7 @@ def fitness_func(solution, solution_idx):
     CL, CM = Calc_Coefs(k, p)
     CLref = 1.4
 
-    return - (abs(CL - CLref) + CM**2)
+    return - (abs(CL - CLref)/CLref + 1e3*abs(CM))
 
 last_fitness = 0
 
@@ -31,20 +31,24 @@ def on_generation(ga_instance):
     last_fitness = ga_instance.best_solution(pop_fitness=ga_instance.last_generation_fitness)[1]
 
 
-ga_instance = pygad.GA(num_generations=50,
-                       num_parents_mating=10,
+ga_instance = pygad.GA(num_generations=70,
+                       num_parents_mating=30,
                        fitness_func=fitness_func,
-                       sol_per_pop=10,
+                       sol_per_pop=50,
                        num_genes=2,
                        gene_space=[{"low": 0, "high": 0.3}, {"low": 0.05, "high": 2.}],
                        mutation_by_replacement=True,
-                       on_generation=on_generation)
+                       on_generation=on_generation,
+                       save_solutions=True)
 
 ga_instance.run()
 ga_instance.plot_fitness()
 
 solution, solution_fitness, solution_idx = ga_instance.best_solution(ga_instance.last_generation_fitness)
 
+Cl, Cm = Calc_Coefs(solution[0], solution[1])
+
 print("Solution", solution)
 print(f"Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
+print("Coefs Values -> Cl = {:f}  Cm = {:f}".format(Cl,Cm))
 
