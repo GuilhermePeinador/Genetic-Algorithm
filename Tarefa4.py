@@ -50,7 +50,7 @@ for i in range(30):
                            save_solutions=True)
 
     ga_instance.run()
-    ga_instance.plot_fitness()
+    #ga_instance.plot_fitness()
     #ga_instance.plot_genes(graph_type="boxplot")
     #ga_instance.plot_genes(graph_type="histogram", solutions='all')
 
@@ -67,18 +67,16 @@ for i in range(30):
     print("Cm array = ",Cm_array)
 
 
-n_bins = 30
+n_bins = 50
 
 fig, ((ax0, ax1)) = plt.subplots(ncols=2)
 
 colors=['red']
 ax0.hist(Cl_array, n_bins, density = True, histtype='bar', color=colors)
-ax0.legend()
 ax0.set_title('Histrograma de Cl')
 
 colors=['blue']
 ax1.hist(Cm_array, n_bins, density = True, histtype='bar', color=colors)
-ax1.legend()
 ax1.set_title('Histrograma de Cm')
 
 fig.tight_layout()
