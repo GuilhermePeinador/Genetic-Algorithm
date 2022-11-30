@@ -69,7 +69,7 @@ for i in range(30):
 
 n_bins = 50
 
-fig, ((ax0, ax1)) = plt.subplots(ncols=2)
+fig, ((ax0, ax1)) = plt.subplots(ncols=2) #todo Mudar para boxplot
 
 colors=['red']
 ax0.hist(Cl_array, n_bins, density = True, histtype='bar', color=colors)

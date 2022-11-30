@@ -13,8 +13,7 @@ def fitness_func(solution, solution_idx):
 
 last_fitness = 0
 
-x_array = []
-y_array = []
+sol_array = []
 
 for i in range(30):
     def on_generation(ga_instance):
@@ -43,25 +42,13 @@ for i in range(30):
 
     solution, solution_fitness, solution_idx = ga_instance.best_solution(ga_instance.last_generation_fitness)
 
-    x_array.append(solution[0])
-    y_array.append(solution[1])
+    sol_array.append(solution_fitness)
 
     print("Solution", solution)
     print(f"Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
-    print("x_array = ", x_array)
-    print("y_array = ", y_array)
+    print("Solutions array = ", sol_array)
 
-n_bins = 50
-
-fig, ((ax0, ax1)) = plt.subplots(ncols=2)
-
-colors = ['red']
-ax0.hist(x_array, n_bins, density=True, histtype='bar', color=colors)
-ax0.set_title('Histograma de x')
-
-colors = ['blue']
-ax1.hist(y_array, n_bins, density=True, histtype='bar', color=colors)
-ax1.set_title('Histograma de y')
-
-fig.tight_layout()
+plt.title('Histograma')
+plt.xlabel('Solution fitness')
+plt.hist(sol_array, 50, color='blue')
 plt.show()
